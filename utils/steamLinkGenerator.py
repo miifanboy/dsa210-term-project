@@ -27,17 +27,16 @@ def parseLink(url: str):
 def main():
 
     parser = argparse.ArgumentParser(description="Generates json links for the price history of cs2 items")
-    parser.add_argument("--url",type=str, help="Url of the marketplace listing")
     parser.add_argument("--path",type=str,default="../data/steamlinks.csv",help="CSV path for steam links.")
     args = parser.parse_args()
 
-    appid, raw_name = parseLink(args.url)
-
+    url = 'https://steamcommunity.com/market/listings/730/%E2%98%85%20Shadow%20Daggers%20%7C%20Lore%20%28Minimal%20Wear%29'
+    appid, raw_name = parseLink(url)
     link = f"https://steamcommunity.com/market/pricehistory/?appid={appid}&market_hash_name={raw_name}"
 
     # Decodes url encoded string into normal string
     clean_name = urllib.parse.unquote(raw_name)
-
+    
     addToCSV(clean_name,link,args.path)
 
 if __name__ == "__main__":
