@@ -8,7 +8,6 @@ from collections import defaultdict
 def json_to_csv(input_file, output_file):
     with open(input_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    
     if 'prices' not in data:
         print("Error: 'prices' key not found in the JSON file.")
         return

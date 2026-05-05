@@ -2,3 +2,6 @@ pandas
 scipy
 matplotlib
 numpy
+pickle
+torch
+sklearn
